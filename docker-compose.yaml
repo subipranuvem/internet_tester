@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_ping
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pingdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d pingdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  ping_monitor:
+    build: .
+    container_name: ping_monitor
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_CONN: "postgres://user:password@postgres:5432/pingdb?sslmode=disable"
+    restart: always
+
+volumes:
+  pgdata:
