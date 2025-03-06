@@ -72,8 +72,18 @@ To connect to the PostgreSQL database, use the following credentials:
 
 ## Viewing Inserted Records
 
-You can copy the contents of the [query.sql](http://_vscodecontentref_/1) file to a PostgreSQL client to view the records inserted into the tables. For example:
+You can copy the contents of the [query.sql](./query.sql) file to a PostgreSQL client to view the records inserted into the tables. For example:
 
 1. Open your PostgreSQL client (e.g., `psql`).
 2. Connect to the database using the credentials provided above.
-3. Copy the contents of [query.sql](http://_vscodecontentref_/2) and execute it in the PostgreSQL client to see the inserted records.
+3. Copy the contents of [query.sql](./query.sql) and execute it in the PostgreSQL client to see the inserted records.
+
+## Exporting Data to CSV
+
+You can export the data to a CSV file using database management tools like DBeaver. Follow these steps or this [tutorial](https://dbeaver.com/2024/09/19/how-to-export-data-in-dbeaver/):
+
+1. Open DBeaver and connect to your PostgreSQL database using the credentials provided above.
+2. Navigate to the table you want to export.
+3. Right-click on the table and select "Export Data".
+4. Choose "CSV" as the format and configure the export settings as needed.
+5. Complete the export process to generate the CSV file.
